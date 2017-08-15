@@ -1,0 +1,11 @@
+
+/*
+ * Transition when the screen is changed
+ */
+.ng-enter {
+    @include transition(opacity .3s ease);
+    @include opacity(0);
+}
+.ng-enter-active {
+    @include opacity(1);
+}

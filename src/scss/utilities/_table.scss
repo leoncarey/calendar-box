@@ -1,0 +1,14 @@
+
+.table-koiber {
+    > thead > tr > th {
+        border-bottom: 1px solid #DDD;
+        font-weight: normal;
+        color: #999;
+    }
+    > tbody {border-bottom: 1px solid #DDD;}
+    .menu {text-align: right;}
+    .menu .a{color: #DDD;padding: 10px 5px;}
+
+    thead th .fa-sort {visibility: hidden;}
+    thead th:hover .fa-sort {visibility: visible;}
+}

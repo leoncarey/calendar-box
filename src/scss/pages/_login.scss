@@ -1,0 +1,15 @@
+
+.login {
+    .form-signin {
+        max-width: 430px;
+        padding: 10px 25px 25px 25px;
+        margin: 80px auto 0;
+        background-color: #FFF;
+        text-align: left;
+
+        .input-error,
+        .input-error:focus {
+            border-color: $red;
+        }
+    }
+}

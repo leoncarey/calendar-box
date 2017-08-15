@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-br" ng-app="calendarBoxApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <base href="http://localhost/db-test/app/">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&amp;subset=latin-ext" rel="stylesheet">
+    <link href="dist/css/app.min.css" rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <title>Calendar Box</title>
+</head>
+<body ng-controller="ApplicationCtrl">
+
+    <!-- Preloader -->
+    <div ng-show="appLoading" class="preloader">
+        <span>Carregando, Aguarde...</span>
+        <i class="fa fa-spinner fa-spin"></i>
+    </div>
+
+    <div class="app" ng-hide="appLoading">
+        <div class="menu" ng-if="currentUser" ng-include="'views/partials/menu.html'"></div>
+
+        <div class="inner-app-container" ui-view></div>
+    </div>
+
+    <!-- Bundle JS -->
+    <script type="text/javascript" src="dist/js/bundle.js"></script>
+
+    <!-- App -->
+    <script type="text/javascript" src="configs/reg.js"></script>
+    <script type="text/javascript" src="dist/modules/controllers.js"></script>
+    <script type="text/javascript" src="dist/modules/services.js"></script>
+    <script type="text/javascript" src="dist/modules/directives.js"></script>
+    <script type="text/javascript" src="configs/app.js"></script>
+
+</body>
+</html>

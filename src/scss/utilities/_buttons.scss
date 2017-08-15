@@ -1,0 +1,51 @@
+
+.btn {
+    font-size: 16px;
+    font-weight: 400;
+    padding: 6px 12px;
+    width: 100%;
+    border: 0;
+    color: $white;
+    background-color: $primary;
+    @include transition(all .3s ease);
+    @include border-radius(8px);
+    text-decoration: none;
+    outline: none;
+    display: inline-block;
+
+    &:focus,
+    &:active,
+    &:hover {
+        background: darken($primary, 15%);
+        color: $white;
+        text-decoration: none;
+    }
+
+    &.btn-secondary {
+        background-color: $tertiary;
+
+        &:focus,
+        &:active,
+        &:hover {
+            background: darken($tertiary, 15%);
+        }
+    }
+
+    &.btn-xs {
+        font-size: 13px;
+        padding: 3px 10px 4px 6px;
+        line-height: 16px;
+        text-align: center;
+
+        .fa {
+            position: relative;
+            top: 0;
+            font-size: 11px;
+        }
+    }
+
+    &[disabled] {
+        background-color: darken($primary, 10%);
+        color: $gray-light-medium;
+    }
+}

@@ -1,0 +1,18 @@
+{
+  "users" : [
+    {
+      "id": 1,
+      "name": "Alcemar",
+      "email": "alcemar@dbserver.com.br",
+      "user_name": "alce",
+      "password": "12345"
+    },
+    {
+      "id": 2,
+      "name": "Xuxa",
+      "email": "xuxa@dbserver.com.br",
+      "user_name": "xuxa",
+      "password": "12345"
+    }
+  ]
+}
