@@ -7,6 +7,16 @@
         background-color: #FFF;
         text-align: left;
 
+        h1 {
+            font-size: 30px;
+            color: $primary;
+
+            span {
+                font-weight: 700;
+                text-transform: uppercase;
+            }
+        }
+
         .input-error,
         .input-error:focus {
             border-color: $red;
