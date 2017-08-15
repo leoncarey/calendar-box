@@ -20,7 +20,7 @@
   /*
    * Urls
    * */
-  app.value('BASE_URL', 'http://localhost/db-test/app/');
+  app.value('BASE_URL', 'http://localhost:8000/app/');
   app.value('URL_WS', 'http://localhost:3330/');
 
 
