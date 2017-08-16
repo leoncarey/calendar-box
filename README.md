@@ -1,6 +1,6 @@
 # Calendar box
 
-#### How to run?
+### How to run?
 
 **Windows:**
 - [x] Run the file `/install.bat`
