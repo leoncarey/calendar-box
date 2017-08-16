@@ -1,4 +1,6 @@
-
+/*
+ * Server on port 8000
+ * */
 var express = require('express'),
     path    = require('path'),
     app     = express();

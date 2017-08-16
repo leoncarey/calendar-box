@@ -16,18 +16,18 @@
     &:focus,
     &:active,
     &:hover {
-        background: darken($primary, 15%);
+        background: darken($tertiary, 15%);
         color: $white;
         text-decoration: none;
     }
 
     &.btn-secondary {
-        background-color: $tertiary;
+        background-color: $primary;
 
         &:focus,
         &:active,
         &:hover {
-            background: darken($tertiary, 15%);
+            background: darken($primary, 15%);
         }
     }
 
@@ -45,7 +45,7 @@
     }
 
     &[disabled] {
-        background-color: darken($primary, 10%);
+        background-color: darken($tertiary, 10%);
         color: $gray-light-medium;
     }
 }

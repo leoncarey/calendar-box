@@ -1,21 +1,22 @@
 // Settings
-const gulp          = require("gulp"),
-    minifyCss         = require("gulp-minify-css"),
-    uglify            = require('gulp-uglify'),
-    sass              = require("gulp-sass"),
-    concat            = require('gulp-concat'),
-    jsmin             = require('gulp-jsmin'),
-    imagemin          = require('gulp-imagemin'),
-    pngquant          = require('imagemin-pngquant'),
-    optipng           = require('imagemin-optipng'),
-    gifsicle          = require('imagemin-gifsicle'),
-    jpegtran          = require('imagemin-jpegtran'),
-    sourcemaps        = require('gulp-sourcemaps'),
-    stripCssComments  = require('gulp-strip-css-comments'),
-    merge2            = require('merge2'),
-    strip             = require('gulp-strip-comments'),
-    notify            = require("gulp-notify"),
-    bower_dir         = 'bower_components/';
+const gulp              = require("gulp"),
+      minifyCss         = require("gulp-minify-css"),
+      uglify            = require('gulp-uglify'),
+      sass              = require("gulp-sass"),
+      concat            = require('gulp-concat'),
+      jsmin             = require('gulp-jsmin'),
+      imagemin          = require('gulp-imagemin'),
+      pngquant          = require('imagemin-pngquant'),
+      optipng           = require('imagemin-optipng'),
+      gifsicle          = require('imagemin-gifsicle'),
+      jpegtran          = require('imagemin-jpegtran'),
+      sourcemaps        = require('gulp-sourcemaps'),
+      stripCssComments  = require('gulp-strip-css-comments'),
+      merge2            = require('merge2'),
+      strip             = require('gulp-strip-comments'),
+      nodemon           = require("nodemon"),
+      notify            = require("gulp-notify"),
+      bower_dir         = 'bower_components/';
 
 // CSS
 gulp.task('build-scss', function() {
@@ -206,11 +207,27 @@ gulp.task('watch', function() {
   ], ['build-directives']);
 });
 
+// Server
+gulp.task('server', function() {
+  nodemon({
+    script: 'server.js',
+    watch: ["server.js"],
+    ext: 'js'
+  }).on('restart', function(){
+      gulp.src('server.js')
+        .pipe(
+            notify('Server restarted!')
+        );
+  });
+});
+
 // Tasks
 gulp.task('default', [
+  'build-bundles',
   'build-scss',
   'build-controllers',
   'build-services',
   'build-directives',
-  'watch'
+  'watch',
+  'server'
 ]);

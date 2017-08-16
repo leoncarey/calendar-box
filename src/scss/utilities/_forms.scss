@@ -274,12 +274,38 @@ input[type="checkbox"] {
  * */
 .error-container {
     position: relative;
-
+    height: 0;
+    @include transition(all .8s ease);
     @include opacity(0);
     z-index: -1;
 
     &.has-error {
         @include opacity(1);
         z-index: 10;
+        height: auto;
+    }
+
+    ul {
+        color: $white;
+        background: lighten($red, 20%);
+        padding: 10px;
+        list-style: none;
+        @include border-radius(3px);
+
+        li {
+            margin-left: 10px;
+            position: relative;
+
+            &:before {
+                content: "-";
+                position: absolute;
+                top: 0;
+                left: -10px;
+            }
+
+            &:not(:last-child) {
+                margin-bottom: 5px;
+            }
+        }
     }
 }

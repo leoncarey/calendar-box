@@ -1,29 +1,30 @@
 
-<section class="login" ng-controler="LoginCtrl">
+<section class="login container">
     <div class="form-signin">
         <h1>
             Calendar<span>Box</span>
         </h1>
 
-        <form action="">
+        <form method="post" name="form-login" ng-submit="makeLogin();" autocomplete="off">
 
-            <div class="error-container">
-                <span class="user-not-found">Usuário não encontrado.</span>
-                <span class="fields-remember"></span>
+            <div class="error-container" ng-class="{'has-error': errors.length != 0}">
+                <ul>
+                    <li ng-repeat="error in errors">{{error}}</li>
+                </ul>
             </div>
 
             <div class="form-group">
                 <label for="login">Nome de usuário</label>
-                <input type="text" name="login" id="login" placeholder="Nome de usuário" class="form-control">
+                <input type="text" name="login" id="login" ng-model="user_signin.login" placeholder="Nome de usuário" class="form-control">
             </div>
 
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" name="password" id="password" placeholder="Senha" class="form-control">
+                <input type="password" name="password" id="password" ng-model="user_signin.password" placeholder="Senha" class="form-control">
             </div>
 
             <div class="form-group">
-                <button type="submit" class="btn">Entrar</button>
+                <button type="submit" class="btn" ng-disabled="">Entrar</button>
             </div>
 
         </form>
