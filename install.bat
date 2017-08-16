@@ -13,6 +13,10 @@ call node.exe -v || (
 call bower --version || (
   npm install -g bower
 )
+:: Install json-server
+@echo Install json-server
+@echo Off
+cmd /c npm install -g json-server
 
 @echo All requeriments installed
 

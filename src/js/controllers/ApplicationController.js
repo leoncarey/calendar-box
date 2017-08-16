@@ -3,12 +3,25 @@
  * ApplicationCtrl
  * */
 appControllers.controller('ApplicationCtrl',
-  function($scope, $rootScope, $location, $timeout) {
+  function($scope, $rootScope, $location, $timeout, AuthService) {
 
-    $rootScope.currentUser = false;
+    // App refresh
+    $rootScope.refreshApp = function () {
+      $rootScope.currentUser = AuthService.isAuthenticated();
+    };
 
-    // $timeout(function () {
-      $rootScope.appLoading = false;
-    // });
+    // Make logout app
+    $scope.makeLogout = function () {
+      $rootScope.appLoading = true;
+
+      AuthService.makeLogout(function () {
+        $rootScope.refreshApp();
+        $location.path('/login');
+        $rootScope.appLoading = false;
+      });
+    };
+
+    // Refresh when load app first time
+    $rootScope.refreshApp();
 
   });

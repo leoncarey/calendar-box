@@ -5,7 +5,7 @@
             Calendar<span>Box</span>
         </h1>
 
-        <form method="post" name="form-login" ng-submit="makeLogin();" autocomplete="off">
+        <form method="post" name="form-login" ng-submit="submitLogin();" autocomplete="off">
 
             <div class="error-container" ng-class="{'has-error': errors.length != 0}">
                 <ul>
@@ -24,7 +24,7 @@
             </div>
 
             <div class="form-group">
-                <button type="submit" class="btn" ng-disabled="">Entrar</button>
+                <button type="submit" class="btn" ng-disabled="loading_form">Entrar</button>
             </div>
 
         </form>

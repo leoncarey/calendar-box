@@ -21,7 +21,7 @@
    * Urls
    * */
   app.value('BASE_URL', 'http://localhost:8000/app/');
-  app.value('URL_WS', 'http://localhost:3330/');
+  app.value('URL_WS', 'http://localhost:3000/');
 
 
   app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $qProvider) {
@@ -69,11 +69,11 @@
     /*
      * Auth config
      * */
-    $httpProvider.interceptors.push(['$q', '$location', '$localStorage', function($q, $location, $localStorage) {
+    $httpProvider.interceptors.push(['$q', '$location', function($q, $location) {
       return {
         'request': function (config) {
-          if ($localStorage.token) {
-            config.headers.Authorization  = $localStorage.token;
+          if (localStorage.token) {
+            config.headers.Authorization  = localStorage.token;
             $location.path('/');
           }
           else {

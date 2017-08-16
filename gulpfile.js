@@ -15,6 +15,8 @@ const gulp              = require("gulp"),
       merge2            = require('merge2'),
       strip             = require('gulp-strip-comments'),
       nodemon           = require("nodemon"),
+      open              = require('gulp-open'),
+      jsonServer        = require("gulp-json-srv").create(),
       notify            = require("gulp-notify"),
       bower_dir         = 'bower_components/';
 
@@ -208,17 +210,34 @@ gulp.task('watch', function() {
 });
 
 // Server
+gulp.task('app', function(){
+  var options = {
+    uri: 'http://localhost:8000',
+    app: 'chrome'
+  };
+  gulp.src('app/index.html')
+      .pipe(open(options));
+});
 gulp.task('server', function() {
   nodemon({
     script: 'server.js',
     watch: ["server.js"],
     ext: 'js'
-  }).on('restart', function(){
+  }).on('start', function () {
+        gulp.start('app');
+      })
+    .on('restart', function(){
       gulp.src('server.js')
         .pipe(
             notify('Server restarted!')
         );
   });
+});
+
+// Json Server
+gulp.task("json-server", function(){
+  gulp.src("db.json")
+      .pipe(jsonServer.pipe());
 });
 
 // Tasks
@@ -229,5 +248,6 @@ gulp.task('default', [
   'build-services',
   'build-directives',
   'watch',
+  'json-server',
   'server'
 ]);

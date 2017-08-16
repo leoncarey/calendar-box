@@ -13,8 +13,52 @@ appControllers.controller('LoginCtrl', ['AuthService', '$scope', '$rootScope', '
       password: '12345'
     };
 
-    $scope.makeLogin = function () {
-      
-    }
+    $scope.submitLogin = function () {
+      $scope.loading_form = true;
+      $scope.errors = [];
+
+      if($scope.user_signin.login == '' || $scope.user_signin.password == '') {
+        $scope.emptyFields();
+      } else {
+        AuthService.makeLogin($scope.user_signin,
+            function(result) {
+
+              if(result.data.length != 0) {
+                $scope.loginIsOK(result);
+              } else {
+                $scope.errors.push('Usuário não encontrado.');
+              }
+
+            },
+            function(error) {
+
+              console.log(error);
+              $scope.errors.push('Erro desconhecido.');
+
+            }
+        );
+
+        $scope.loading_form = false;
+      }
+    };
+
+    $scope.loginIsOK = function (result) {
+      var user_returned = result.data[0];
+
+      localStorage.token = user_returned.token;
+      localStorage.user = {
+        user_name:  user_returned.user_name,
+        name:       user_returned.name,
+        email:      user_returned.email
+      };
+
+      $rootScope.refreshApp();
+      $location.path('/');
+    };
+
+    $scope.emptyFields = function () {
+      $scope.errors.push('Por favor, preencha os campos corretamente.');
+      $scope.loading_form = false;
+    };
 
   }]);

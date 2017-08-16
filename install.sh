@@ -28,6 +28,17 @@ else
 	echo Bower [OK]
 fi
 
+#################
+if ! hash json-server > /dev/null; then
+	echo # newline
+	echo Installing Json-server...
+	echo # newline
+
+	npm install -g json-server
+else
+	echo Bower [OK]
+fi
+
 #
 echo Instalando pacotes npm...
 echo # newline

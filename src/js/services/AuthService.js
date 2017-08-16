@@ -2,59 +2,30 @@
 /*
  * AuthService
  */
-appServices.factory('AuthService', ['$cookies', '$q', '$http', 'URL_WS', 'Token', '$localStorage',
-  function($cookies, $q, $http, URL_WS, Token, $localStorage){
+appServices.factory('AuthService', ['$cookies', '$q', '$http', 'URL_WS', '$timeout',
+  function($cookies, $q, $http, URL_WS, $timeout){
     return {
       isAuthenticated: function() {
-        return Token.logado;
+        return localStorage.token ? localStorage.user : false;
       },
-      makeLogin: function(login, password) {
-        $http.post(URL_WS + '/users', data).then(function(result) {
-
-              if(result.data) {
-                $localStorage.token = result.data.token;
-                $localStorage.user = {
-                  login: data.login,
-
-                  profile: {
-                    name: 'Usuário',
-                    email: 'usuario@gmail.com',
-                    phone: '(51) 9 9270-9969',
-                    avatar: 'user_default.png'
-                  }
-                };
-                $cookies.token = result.data.token;
-                Token.token = result.data.token;
-                Token.logado = true;
-              }
-
-            },
-            function() {
-              deferred.reject("Erro desconhecido");
-            });
-
-        return deferred.promise;
+      makeLogin: function(user_signin, success, error) {
+        $http.get(
+            URL_WS + 'users?user_name='+ user_signin.login +'&password=' + user_signin.password
+        ).then(success, error);
       },
-      makeLogout: function(login, password, callback) {
+      makeLogout: function(afterLogout) {
+        delete sessionStorage;
+        delete localStorage.token;
+        delete localStorage.user;
 
+        $timeout(afterLogout, 200);
       },
-      passwordReset: function(email) {
-        var deferred = $q.defer();
-        var data = {email: email};
+      passwordReset: function(user_id, new_password) {
+        var data = {
+          password: new_password
+        };
 
-        $http.post(URL_HTTP + '/password-reset', data).then(function(result){
-              if(result.data.status) {
-                deferred.resolve();
-                localStorage.setItem('token', result.data.token);
-                $cookies.put('token', result.data.token);
-              }else{
-                deferred.reject(result.data.reason);
-              }
-            },
-            function(){
-              deferred.reject("Erro desconhecido");
-            });
-        return deferred.promise;
+        $http.post(URL_WS + 'users/'+ user_id, data).then(success, error);
       }
     };
   }]);
