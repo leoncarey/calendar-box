@@ -1,4 +1,5 @@
 # Calendar box
+The **Calendar box** is a calendar widget panel.
 
 ### How to run?
 
