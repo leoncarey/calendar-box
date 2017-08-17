@@ -1,20 +1,43 @@
 {
   "users" : [
     {
-      "id": 1,
-      "name": "Alcemar",
-      "email": "alcemar@dbserver.com.br",
-      "user_name": "alce",
-      "password": "12345",
-      "token": "54assad57s5d7a65s7a5dsf748ads"
+      "id" : 1,
+      "name" : "Alcemar",
+      "email" : "alcemar@dbserver.com.br",
+      "user_name" : "alce",
+      "password" : "12345",
+      "token" : "54assad57s5d7a65s7a5dsf748ads"
     },
     {
-      "id": 2,
-      "name": "Xuxa",
-      "email": "xuxa@dbserver.com.br",
-      "user_name": "xuxa",
-      "password": "12345",
-      "token": "54assad57s5d7a65s7a5dsf748ads"
+      "id" : 2,
+      "name" : "Xuxa",
+      "email" : "xuxa@dbserver.com.br",
+      "user_name" : "xuxa",
+      "password" : "12345",
+      "token" : "54assad57s5d7a65s7a5dsf748ads"
+    }
+  ],
+
+  "schedule" : [
+    {
+      "id" : 1,
+      "user_id" : 1,
+      "date" : "23/08/2017"
+    },
+    {
+      "id" : 2,
+      "user_id" : 1,
+      "date" : "24/08/2017"
+    },
+    {
+      "id" : 3,
+      "user_id" : 2,
+      "date" : "23/08/2017"
+    },
+    {
+      "id" : 4,
+      "user_id" : 2,
+      "date" : "24/08/2017"
     }
   ]
 }

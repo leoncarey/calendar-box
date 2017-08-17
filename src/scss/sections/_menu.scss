@@ -1,59 +1,54 @@
 
-.menu-left {
-    position: relative;
-    width: 50px;
+.menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20%;
     height: 100%;
-    float: left;
-    overflow: hidden;
+    float: right;
+    background: $white;
+    border-left: 1px solid $primary;
+    @include box-shadow(2px -5px 10px 5px $gray);
 
-    .inner-menu-left {
+    .top-menu {
+        padding: 10px;
+        @include clearfix();
+    }
+
+    .inner-menu {
         position: relative;
         width: 100%;
         height: 100%;
-        background-color: #FFF;
-        border-top: 1px solid $gray-light;
-        border-right: 1px solid $gray-light;
-        overflow-x: auto;
         z-index: 200;
         padding: 0;
         @include transition(all .3s ease);
-        @include box-shadow(inset -10px 0 10px -10px $gray);
+
+        .btn-logout {
+            width: 80px;
+            display: block;
+            float: right;
+            text-align: center;
+        }
     }
 
     .menu-links {
-        list-style: none;
+        width: 100%;
         margin: 0;
         padding: 0;
+        list-style: none;
 
-        li {
-            display: block;
-
-            &.active a,
-            a:hover {
-                @include box-shadow(inset -10px 0 10px -10px $gray);
-                background: $gray-light;
-                color: $white;
-
-                .channel-link {
-                    border-color: $white;
-                }
-            }
-        }
         a {
-            color: $secondary;
-            font-size: 25px;
-            padding: 10px 0;
+            width: 100%;
             display: block;
-        }
-        .channel-link {
-            display: block;
-            width: 25px;
-            font-size: 14px;
-            border: 2px solid $secondary;
-            margin: 0 auto;
-            text-align: center;
-            @include border-radius(1px);
-            @include transition(border 500ms ease);
+            padding: 10px;
+            background: $primary;
+            color: $white;
+            text-decoration: none;
+            border-bottom: 1px solid $gray-light;
+
+            &:hover {
+                background: darken($primary, 10%);
+            }
         }
     }
 }

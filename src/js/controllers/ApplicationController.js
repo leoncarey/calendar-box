@@ -7,7 +7,9 @@ appControllers.controller('ApplicationCtrl',
 
     // App refresh
     $rootScope.refreshApp = function () {
-      $rootScope.currentUser = AuthService.isAuthenticated();
+      $rootScope.currentUser = JSON.parse( AuthService.isAuthenticated() );
+
+      console.log($rootScope.currentUser);
     };
 
     // Make logout app

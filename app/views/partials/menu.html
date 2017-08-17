@@ -1,4 +1,18 @@
 
- <aside class="menu">
-  <a href="#" class="btn" ng-click="makeLogout()">Logout</a>
- </aside>
+<aside class="inner-menu">
+    <div class="top-menu">
+        <span>Olá, {{ currentUser.name }}!</span>
+
+        <a href="#" class="btn btn-default btn-logout btn-xs" ng-click="makeLogout()">Logout</a>
+    </div>
+
+    <ul class="menu-links">
+        <li>
+            <a href="#">Dashboard</a>
+        </li>
+
+        <li>
+            <a href="#">Meus dados</a>
+        </li>
+    </ul>
+</aside>

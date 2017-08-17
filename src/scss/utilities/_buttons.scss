@@ -21,6 +21,16 @@
         text-decoration: none;
     }
 
+    &.btn-default {
+        background-color: $gray;
+
+        &:focus,
+        &:active,
+        &:hover {
+            background: darken($gray, 15%);
+        }
+    }
+
     &.btn-secondary {
         background-color: $primary;
 

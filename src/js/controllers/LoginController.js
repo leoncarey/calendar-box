@@ -31,10 +31,8 @@ appControllers.controller('LoginCtrl', ['AuthService', '$scope', '$rootScope', '
 
             },
             function(error) {
-
               console.log(error);
               $scope.errors.push('Erro desconhecido.');
-
             }
         );
 
@@ -46,11 +44,11 @@ appControllers.controller('LoginCtrl', ['AuthService', '$scope', '$rootScope', '
       var user_returned = result.data[0];
 
       localStorage.token = user_returned.token;
-      localStorage.user = {
+      localStorage.user = JSON.stringify({
         user_name:  user_returned.user_name,
         name:       user_returned.name,
         email:      user_returned.email
-      };
+      });
 
       $rootScope.refreshApp();
       $location.path('/');
